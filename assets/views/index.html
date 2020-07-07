@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+	<title>Todo List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/todos.css">
+	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/db.js"></script>
+	
+</head>
+<body>
+    <!-- NAV BAR -->
+	<!-- Image and text -->
+	<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+		<a class="navbar-brand" href="#">
+		<img src="../images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+		BookMarker
+		</a>
+		<button class="btn btn-outline-primary ml-auto" type="" onclick="updateDB()">Save <i class="fa fa-hdd" aria-hidden="true"></i></button>
+		<button class="btn btn-outline-success my-2 my-sm-0" type="" onclick="signOut()">Logout <i class="fas fa-sign-out-alt"></i></button>
+	</nav>
+	<!-- NAV BAR -->
+	<br>
+	
+
+	<section>
+	<form>
+	<!-- ADD CARD TO BODY BUTTON-->
+		<div class="container" >
+			<div id="new_list_button">
+				<input class="card text-center form-control" type="text" placeholder="Enter name of new list" id="new_list_name" required>
+			</div>
+				<br>
+			<div class="card border-primary text-center" >
+				<button id="new_bookmark" type="submit" class="btn btn-outline-primary text-center">Add new list <i class="fa fa-plus-circle" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+	<!-- ADD CARD TO BODY BUTTON -->
+	<br>
+	</form>
+	</section>
+	<!-- ADD CARD TO BODY -->
+	<form name="login" id='Save_bookmark' method='POST' class="container ">
+	<section>
+		<div id="add_bookmark" >
+		</div>
+
+	</section>		
+	</form>
+
+<script type="text/javascript" src="../js/todos.js"></script>
+</body>
+</html>
