@@ -75,9 +75,13 @@ function updateDB(){
       console.log(temp);
       $.ajax({
         url: 'http://localhost:3000/save',
-        dataType: 'json',
+        dataType: 'jsonp',
         type: 'post',
         data: temp,
+        secure: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
         success: function( responseData, textStatus, jQxhr ){
             console.log("saved");
         },
@@ -102,9 +106,13 @@ function queryDB(){
     data['username'] = localStorage.username;
     $.ajax({
         url: `http://localhost:3000/query`,
-        dataType: 'json',
+        dataType: 'jsonp',
         type: 'post',
         data: data,
+        secure: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
         success: function( resultData, textStatus, jQxhr ){
             console.log(resultData)
             resultData.forEach(function(item,index){
@@ -159,13 +167,15 @@ function signOut(){
 }
 
 //Handling remaining events.
-$(document).ready(function(){
-    var data = {};
-    data['username'] = localStorage.username;
-    queryDB();
+$.noConflict(function ($) {
+    $(document).ready(function(){
+        var data = {};
+        data['username'] = localStorage.username;
+        queryDB();
 
-    $("#Save_bookmark").on( "submit", function( event ) {
-        event.preventDefault();
-        updateDB();
+        $("#Save_bookmark").on( "submit", function( event ) {
+            event.preventDefault();
+            updateDB();
+        });
     });
-});
+})

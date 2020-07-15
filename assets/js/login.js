@@ -17,10 +17,14 @@ $(document).ready(function(){
 
         $.ajax({
             url: 'http://localhost:3000/login',
-            dataType: 'json',
+            dataType: 'jsonp',
             type: 'post',
             contentType: 'application/x-www-form-urlencoded',
             data: userdata,
+            secure: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
             success: function( data, textStatus, jQxhr ){
                 localStorage.setItem('username', userdata['username']);
                 if(data.message == 'true')

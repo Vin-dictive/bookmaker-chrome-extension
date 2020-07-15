@@ -1,12 +1,19 @@
 {
-  "name": "Getting Started Example",
+  "name": "Bookmarker",
   "version": "1.0",
-  "description": "Build an Extension!",
-  "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
+  "description": "Record your Bookmarks!",
+  "permissions": ["activeTab", "declarativeContent", "storage", "tabs" ,"<all_urls>"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["assets/js/jquery-3.5.1.min.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "page_action": {
     "default_popup": "assets/views/login.html",
     "default_icon": {
