@@ -16,15 +16,20 @@ $(document).ready(function(){
             userdata[formData[i]['name']] = formData[i]['value'];
 
         $.ajax({
-            url: 'http://localhost:3000/login',
-            dataType: 'jsonp',
-            type: 'post',
-            contentType: 'application/x-www-form-urlencoded',
+            url: "http://localhost:3000/login",
+            headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+            type:"POST",
+            dataType:"json",
             data: userdata,
-            secure: true,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-            },
+            // type: "POST",
+            // crossDomain:true,
+            // dataType:"json",
+            // contentType: 'application/x-www-form-urlencoded',
+            // data: userdata,
+            // secure: true,
+            // headers: {
+            //     'Access-Control-Allow-Origin': '*',
+            // },
             success: function( data, textStatus, jQxhr ){
                 localStorage.setItem('username', userdata['username']);
                 if(data.message == 'true')

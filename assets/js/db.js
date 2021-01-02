@@ -75,13 +75,10 @@ function updateDB(){
       console.log(temp);
       $.ajax({
         url: 'http://localhost:3000/save',
-        dataType: 'jsonp',
-        type: 'post',
+        headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+        dataType: 'json',
+        type: 'POST',
         data: temp,
-        secure: true,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
         success: function( responseData, textStatus, jQxhr ){
             console.log("saved");
         },
@@ -106,13 +103,10 @@ function queryDB(){
     data['username'] = localStorage.username;
     $.ajax({
         url: `http://localhost:3000/query`,
-        dataType: 'jsonp',
-        type: 'post',
+        headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+        dataType: 'json',
+        type: 'POST',
         data: data,
-        secure: true,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
         success: function( resultData, textStatus, jQxhr ){
             console.log(resultData)
             resultData.forEach(function(item,index){
@@ -163,19 +157,28 @@ function signOut(){
     data['username'] = localStorage.username;
     // updateDB();
     localStorage.clear();
-    window.location.replace('login.html')
+    window.location.replace('login.html');
 }
 
-//Handling remaining events.
-$.noConflict(function ($) {
-    $(document).ready(function(){
-        var data = {};
-        data['username'] = localStorage.username;
-        queryDB();
 
-        $("#Save_bookmark").on( "submit", function( event ) {
-            event.preventDefault();
+
+//Handling remaining events.
+$(document).ready(function(){
+    var data = {};
+    data['username'] = localStorage.username;
+    queryDB();
+
+    $("#Save_bookmark").on( "submit", function( event ) {
+        event.preventDefault();
+        updateDB();
+    });
+
+    $("#signOut").click(function(){
+        signOut();
+    });
+
+    $("#updateDB").click(function(){
             updateDB();
         });
-    });
-})
+});
+

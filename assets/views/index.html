@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <head>
 	<title>Todo List</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/todos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="../js/db.js"></script>
 	
@@ -15,8 +18,8 @@
 		<img src="../images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 		BookMarker
 		</a>
-		<button class="btn btn-outline-primary ml-auto" type="" onclick="updateDB()">Save <i class="fa fa-hdd" aria-hidden="true"></i></button>
-		<button class="btn btn-outline-success my-2 my-sm-0" type="" onclick="signOut()">Logout <i class="fas fa-sign-out-alt"></i></button>
+		<button class="btn btn-outline-primary ml-auto" type="" id="updateDB" >Save</button>
+		<button class="btn btn-outline-success my-2 my-sm-0" id="signOut" type=""  >Logout </button>
 	</nav>
 	<!-- NAV BAR -->
 	<br>

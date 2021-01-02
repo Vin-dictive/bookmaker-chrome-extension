@@ -1,3 +1,4 @@
+	
 	// Adding Hyperlinks for Bookmarks with links and getting the icon for the same
 	function replaceLinks(str, title) {
 		var regex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -116,7 +117,5 @@
 		}
 		//to check for links and make them hyperlinks
 	});
-	
-	
 	
 

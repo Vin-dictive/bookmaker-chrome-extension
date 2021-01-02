@@ -15,9 +15,14 @@ app.use('/assets', express.static('assets'));
 //necessary imports
 const bcrypt = require('bcryptjs');
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://vinay_1998:2W7Q2P4RHWKCDrDR@bookmarker-cofya.gcp.mongodb.net/bookmarker?retryWrites=true&w=majority';
+const url = 'mongodb+srv://funju1998:20Zl9Ac4ys4rdANX@bookmarker.cofya.gcp.mongodb.net/bookmarker?retryWrites=true&w=majority';
 const dbName = 'bookmarker';
 const client = new MongoClient(url);
+
+router.get("/test",function(req,res){
+  console.log("Server is working fine!!");
+  res.send("Hello Client");
+})
 
 router.post('/login',function(req,res){
   console.log('You have logged in!!')
@@ -37,10 +42,16 @@ router.post('/login',function(req,res){
             var hash = result[0]['passwordHash'];
             if(bcrypt.compareSync(data['password'], hash)){
               console.log('Successful login.');
+
+              res.setHeader("Access-Control-Allow-Origin", "*");
+
               res.status(200).send({"message":"true"});
             }
             else{
               console.log('Incorrect password');
+
+              res.setHeader("Access-Control-Allow-Origin", "*");
+
               res.status(200).send({"message":"false"})
             }
         }
@@ -60,9 +71,15 @@ router.post('/query',function(req,res){
     try{
       userCollection.findOne({'username':data['username']},function(err,result){
         if(err) throw err;
-        if(result === null) {res.status(200).send({})}
+        if(result === null) {
+          res.setHeader("Access-Control-Allow-Origin", "*");
+          res.status(200).send({})
+        }
         else {
           var data = result['data']
+
+          res.setHeader("Access-Control-Allow-Origin", "*");
+
           res.status(200).send(data);
         }
       });
@@ -86,6 +103,8 @@ router.post('/save',function(req,res){
     const userCollection = db.collection('bookmark');
     userCollection.update({'username':username},{$set:{data}},{ upsert: true});
     console.log("Update complete");
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.status(200).send();
   });
 
